@@ -5,10 +5,10 @@ name = "pypi"
 
 [packages]
 mcap = "*"
+protobuf = "*"
 
 [dev-packages]
 black = "*"
-protobuf = "*"
 pytest = "*"
 
 [requires]

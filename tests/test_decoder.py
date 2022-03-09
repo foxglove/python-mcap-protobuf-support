@@ -7,10 +7,9 @@ from .generate import generate_sample_data
 
 
 def test_protobuf_decoder():
-    pass
-    # output = BytesIO()
-    # generate_sample_data(output)
-    # reader = StreamReader(output)
-    # decoder = Decoder(reader)
-    # for message in decoder.messages:
-    #     print(message)
+    output = BytesIO()
+    generate_sample_data(output)
+    reader = StreamReader(output)
+    decoder = Decoder(reader)
+    messages = [m for m in decoder.messages]
+    assert len(messages) == 20
