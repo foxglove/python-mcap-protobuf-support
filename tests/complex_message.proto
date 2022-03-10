@@ -1,9 +1,5 @@
 syntax = "proto3";
 
-message SimpleMessage {
-    string data = 1;
-}
-
 message ComplexMessage {
     string fieldA = 1;
     string fieldB = 2;
