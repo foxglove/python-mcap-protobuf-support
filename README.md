@@ -21,6 +21,7 @@ from mcap.mcap0.writer import Writer as McapWriter
 from .complex_message_pb2 import ComplexMessage
 from .simple_message_pb2 import SimpleMessage
 
+output = open("example.mcap", "wb")
 mcap_writer = McapWriter(output)
 mcap_writer.start(profile="protobuf", library="test")
 
