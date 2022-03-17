@@ -13,7 +13,7 @@ def test_protobuf_decoder():
     generate_sample_data(output)
     assert (
         hashlib.sha256(output.getvalue()).hexdigest()
-        == "674168d7005e806cc89401385b962fcaa650d34ed2927c4ae25dfc991cb9e321"
+        == "693af8e1f070bbd11a0bfc7e8c870f37b48672b133bc4af81d2ab5c5a5cc46bc"
     )
     reader = StreamReader(cast(RawIOBase, output))
     decoder = Decoder(reader)
