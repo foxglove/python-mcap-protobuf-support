@@ -12,6 +12,18 @@ pipenv install mcap-protobuf-support
 
 ## MCAP protobuf writing example
 
+First, compile each of your message definitions:
+
+```bash
+protoc complex_message.proto --python_out . -o complex_message.fds
+protoc simple_message.proto --python_out . -o simple_message.fds
+```
+
+Next, use those message definitions to register schema in the mcap file. _Note_ that the names
+of the messages in the proto files must correspond to the schema names in the mcap file. For example,
+the message type `SimpleMessage` in the .proto file must be registered as an mcap schema with the name
+`SimpleMessage`.
+
 ```python
 from pathlib import Path
 from typing import IO, Any
