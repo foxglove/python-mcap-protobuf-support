@@ -1,26 +1,3 @@
-# Python MCAP protobuf support
-
-This package provides protobuf support for the Python MCAP file format reader.
-
-## Installation
-
-Install via [Pipenv](https://pipenv.pypa.io/en/latest/) by adding `mcap-protobuf-support` to your `Pipfile` or via the command line:
-
-```bash
-pipenv install mcap-protobuf-support
-```
-
-## MCAP protobuf writing example
-
-First, compile all of your message definitions:
-
-```bash
-protoc *.proto --python_out .
-```
-
-Next, use the classes generated from those message definitions to register schema in the mcap file.
-
-```python
 from mcap.mcap0.writer import Writer as McapWriter
 from mcap_protobuf.schema import register_schema
 
@@ -65,20 +42,3 @@ for i in range(1, 11):
 
 mcap_writer.finish()
 output.close()
-```
-
-## MCAP protobuf decoding example
-
-```python
-from mcap.mcap0.stream_reader import StreamReader
-from mcap_protobuf.decoder import Decoder
-
-reader = StreamReader("my_data.mcap")
-decoder = Decoder(reader)
-for m in decoder.messages:
-    print(m)
-```
-
-## Stay in touch
-
-Join our [Slack channel](https://foxglove.dev/join-slack) to ask questions, share feedback, and stay up to date on what our team is working on.
