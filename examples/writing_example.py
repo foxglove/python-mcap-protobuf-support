@@ -1,8 +1,13 @@
+import os
+import sys
+
+sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
+
 from mcap.mcap0.writer import Writer as McapWriter
 from mcap_protobuf.schema import register_schema
 
-from .complex_message_pb2 import ComplexMessage
-from .simple_message_pb2 import SimpleMessage
+from complex_message_pb2 import ComplexMessage
+from simple_message_pb2 import SimpleMessage
 
 output = open("example.mcap", "wb")
 mcap_writer = McapWriter(output)
@@ -29,14 +34,14 @@ for i in range(1, 11):
     mcap_writer.add_message(
         channel_id=simple_channel_id,
         log_time=i * 1000,
-        data=simple_message.SerializeToString(),
+        data=simple_message.SerializeToString(),  # type: ignore
         publish_time=i * 1000,
     )
     complex_message = ComplexMessage(fieldA=f"Field A {i}", fieldB="Field B {i}")
     mcap_writer.add_message(
         channel_id=complex_channel_id,
         log_time=i * 1000,
-        data=complex_message.SerializeToString(),
+        data=complex_message.SerializeToString(),  # type: ignore
         publish_time=i * 1000,
     )
 
